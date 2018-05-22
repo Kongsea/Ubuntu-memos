@@ -45,7 +45,7 @@ Copy `source_folder` to `target_folder`:
   - max-size: emit large files
   - exclude: exclude some files or folders
 
-## 4. Check disk usage and show large files and folders
+## 5. Check disk usage and show large files and folders
 
 - `du -h --threshold=1G | sort -h`
 - Or: `sudo du -h --threshold=1G | sort -h`
@@ -86,4 +86,3 @@ an image from Terminal instead of opening the folder. Use:
 We want to check some running process, for example, processes running using python. Use:
 
 - `ps -ef | grep python`
-
