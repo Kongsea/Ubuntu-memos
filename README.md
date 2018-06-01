@@ -7,7 +7,6 @@ Record common system operations on Ubuntu
 ## 1. Make links to a file or a folder
 
 - `ln -s source_file target_file`
-
 - `ln -s source_folder target_folder`
 
 Make links to specific files:
@@ -50,6 +49,13 @@ Copy `source_folder` to `target_folder`:
 - `du -h --threshold=1G | sort -h`
 - Or: `sudo du -h --threshold=1G | sort -h`
 
+## 6. Count files
+
+Count files in current folder or some folder:
+
+- `ls | wc -l`
+- Or: `ls -al | wc -l`
+
 # Operations
 
 ## 1. login to a remote machine
@@ -86,3 +92,22 @@ an image from Terminal instead of opening the folder. Use:
 We want to check some running process, for example, processes running using python. Use:
 
 - `ps -ef | grep python`
+
+## 6. Search contents of files
+
+Search from contents of files.
+
+- `grep -r content [file or folder]`
+
+## 7. Git operations
+
+Set Git user.name and user.email:
+
+- `git config --global user.name "Kongsea"`
+- `git config --global user.email "Kongsea@gmail.com"`
+
+Look up the settings:
+
+- `git config --global user.name`
+- `git config --global user.email`
+
