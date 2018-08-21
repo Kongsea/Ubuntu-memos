@@ -56,6 +56,12 @@ Count files in current folder or some folder:
 - `ls | wc -l`
 - Or: `ls -al | wc -l`
 
+## 7. Mount a remote filesystem
+
+Mount a remote filesystem to local and use it like local drives:
+
+- `sshfs -p 2222 user@192.168.3.3:/remote_folder/ local_folder/`
+
 # Operations
 
 ## 1. login to a remote machine
@@ -110,4 +116,46 @@ Look up the settings:
 
 - `git config --global user.name`
 - `git config --global user.email`
+
+## 8. Login to server while not input the password every time
+
+Use ssh-copy-id:
+
+- `ssh-copy-id user@192.168.3.3`
+- `ssh-copy-id -p 23 user@192.168.3.3`
+
+Then you can use `ssh` or `scp` and don't need to input the password.
+
+## 9. Count file numbers under current directory according to subfolders
+
+Use find:
+
+```
+find . -type d -print0 | while read -d '' -r dir; do
+  files=("$dir"/*)
+  printf "%5d files in directory %s\n" "${#files[@]}" "$dir"
+done
+```
+or:
+
+- `find -type d -maxdepth 1 | xargs -I {} sh -c "echo {}; ls -1 {} | wc -l"`
+
+or use:
+
+- `du -a | cut -d/ -f2 | sort | uniq -c | sort -nr`
+
+## 10. Check a file in hex mode
+
+Use hexdump:
+
+Check 512 bytes from 800 bytes:
+
+- `hexdump -C -s 800 -n 512 filename`
+
+or use:
+
+- `tail -f somefile | hexdump -C`
+
+to check a file from end
+
 
