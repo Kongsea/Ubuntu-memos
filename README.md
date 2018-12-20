@@ -62,6 +62,26 @@ Mount a remote filesystem to local and use it like local drives:
 
 - `sshfs -p 2222 user@192.168.3.3:/remote_folder/ local_folder/`
 
+## 8. Fetch some items of a text line
+
+Use `awk`:
+
+To output the `pid` of python process:
+
+- `ps -ef | grep python | awk '{print $2}'`
+
+To kill the python process lauched by `kongsea`:
+
+- `ps -ef | grep python | grep kongsea | awk '{print $2}' | xargs kill`
+
+About `awk`:
+
+Output the items of a text line seperated by space or tab.
+
+Output the first and fourth items of every line in `log.txt`:
+
+- `awk '{print $1,$4}' log.txt`
+
 # Operations
 
 ## 1. login to a remote machine
@@ -157,5 +177,16 @@ or use:
 - `tail -f somefile | hexdump -C`
 
 to check a file from end
+
+## 11. Change login shell of a user
+
+You can use `useradd` to add a user for Ubuntu.
+However, in Ubuntu 18, the default login shell will be `/bin/sh`. You will not get a standard prompt command. Instead, it will look like:
+
+- `$`
+
+You can change the login shell by executing the command:
+
+- `sudo usermod -s /bin/bash svn`
 
 
