@@ -62,6 +62,15 @@ Mount a remote filesystem to local and use it like local drives:
 
 - `sshfs -p 2222 user@192.168.3.3:/remote_folder/ local_folder/`
 
+To unmount it, use `fusermount`:
+
+- `fusermount -u /path/to/sshfs/share`
+
+or Kill the process using pkill and then un mount the mounted folder path:
+
+- `pkill -kill -f "sshfs" && umount /path/to/sshfs/share`
+- `pkill -kill -f "sshfs" && fusermount -u /path/to/sshfs/share`
+
 ## 8. Fetch some items of a text line
 
 Use `awk`:
