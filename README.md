@@ -198,4 +198,14 @@ You can change the login shell by executing the command:
 
 - `sudo usermod -s /bin/bash svn`
 
+## 12. Detele keys matching a pattern in **redis**
 
+Redis does not offer a way to delete some keys. We can use `redis-cli` to bulk delete keys without blocking redis.
+
+This command will delete all keys matching a pattern, say, starting with `Kong`:
+
+- `redis-cli --scan --pattern Kong* | xargs redis-cli del`
+
+If you are in redis 4.0 or above, you can use the `unlink` command instead to delete keys in the background.
+
+- `redis-cli --scan --pattern Kong* | xargs redis-cli unlink`
