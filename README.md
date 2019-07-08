@@ -107,6 +107,8 @@ Use **screen**:
 - Run the program in the opened scene, then close the Terminal
 - `screen -r screen_name` to restore the running program and look up the running status
 
+For `screen` commands, see [screen](./screen.md)
+
 ## 3. Run a shell after closing Terminal
 
 - `./shell.sh &`
