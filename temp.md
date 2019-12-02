@@ -23,3 +23,11 @@
   - docker volume create -d vieux/sshfs -o sshcmd=username@remote_host:/folder_on_remote_host -o password='password' -o port='port' sshvolume
 
   - docker run -t --name sshfs-container --mount src=sshvolume,target=/folder_in_docker,type=volume,volume-driver=vieux/sshfs --rm docker_name:tag
+
+4. Backup and restore settings of Terminal:
+
+  - backup: `dconf dump /org/gnome/terminal/ > gnome_terminal_settings_backup.txt`
+
+    [backup files](./gnome_terminal_settings.txt)
+
+  - restore: `dconf load /org/gnome/terminal/ < gnome_terminal_settings_backup.txt`
