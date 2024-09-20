@@ -71,6 +71,17 @@ or Kill the process using pkill and then un mount the mounted folder path:
 - `pkill -kill -f "sshfs" && umount /path/to/sshfs/share`
 - `pkill -kill -f "sshfs" && fusermount -u /path/to/sshfs/share`
 
+or search the mount progress: 
+
+- `cat /proc/mounts | grep mount_point`
+
+and then kill it:
+
+- `cat /proc/mounts | grep mount_point | while read line; do`
+- `    mount_point=$(echo $line | awk '{print $2}')`
+- `    sudo umount -f "$mount_point" || sudo fusermount -u "$mount_point"`
+- `done`
+
 ## 8. Fetch some items of a text line
 
 Use `awk`:
@@ -211,3 +222,15 @@ This command will delete all keys matching a pattern, say, starting with `Kong`:
 If you are in redis 4.0 or above, you can use the `unlink` command instead to delete keys in the background.
 
 - `redis-cli --scan --pattern Kong* | xargs redis-cli unlink`
+
+## 13. Use clash to Cross GFW
+
+Use clash without GUI to cross GFW:
+
+- `vim clash/config.yaml` to add the proxies
+
+and then:
+
+- `sudo systemctl start clash.service` to start the service
+
+At last, use `proxychains` to cross the GFW.
