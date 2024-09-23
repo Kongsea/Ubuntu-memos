@@ -31,3 +31,12 @@
     [backup files](./gnome_terminal_settings.txt)
 
   - restore: `dconf load /org/gnome/terminal/ < gnome_terminal_settings_backup.txt`
+
+5.Windows下访问WSL文件夹提示`\\wsl.localhost 无法访问。你可能没有权限使用网络资源。请与这台服务器的管理员联系以查明你是否有访问权限。` [refer](https://lotl.cn/wsl/)
+
+  - 打开注册表编辑器，修改两个文件
+
+    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order`
+    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\HwOrder`
+
+  - 将两个目录下的`ProviderOrder`原始数值都修改成: `P9NP,RDPNP,LanmanWorkstation,webclient`
